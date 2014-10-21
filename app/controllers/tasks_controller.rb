@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.incomplete
     @task = Task.new
   end
 
@@ -9,7 +9,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to root_path
     else
-      @tasks = current_user.tasks
+      @tasks = current_user.tasks.incomplete
       render :index
     end
   end
