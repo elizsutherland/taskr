@@ -1,0 +1,7 @@
+
+<% if target.errors.any? %>
+      <h2><%= pluralize target.errors.count, "error" %> prevented the form from saving </h2>
+  <% target.errors.full_messages do |message| %>
+    <li><%= message %> </li>
+<% end %>
+<% end %>

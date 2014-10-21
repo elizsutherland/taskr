@@ -6,8 +6,12 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params)
-    @task.save
+    if @task.save
       redirect_to root_path
+    else
+      @tasks = current_user.tasks
+      render :index
+    end
   end
 
   private

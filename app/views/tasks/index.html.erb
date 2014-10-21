@@ -1,6 +1,7 @@
 <h1> Welcome </h1>
 <ul>
   <%= form_for @task do |form| %>
+    <%= render "error_messages", target: @task %>
     <div>
       <%=form.label :title %>
       <%=form.text_field :title %>
