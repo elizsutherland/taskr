@@ -13,10 +13,15 @@ class TasksController < ApplicationController
       render :index
     end
   end
+  def update
+    task = current_user.tasks.find(params[:id])
+    task.update(task_params)
+    redirect_to tasks_path
+  end
 
   private
 
   def task_params
-    params.require(:task).permit(:title, :description)
+    params.require(:task).permit(:title, :description, :completed)
   end
 end
