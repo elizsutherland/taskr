@@ -1,13 +1,15 @@
 class TasksController < ApplicationController
+  before_action :require_login
   def index
-    @tasks = current_user.tasks.incomplete
+    @incomplete_tasks = current_user.tasks.incomplete
+    @complete_tasks = current_user.tasks.complete
     @task = Task.new
   end
 
   def create
     @task = current_user.tasks.new(task_params)
     if @task.save
-      redirect_to root_path
+      render @task
     else
       @tasks = current_user.tasks.incomplete
       render :index

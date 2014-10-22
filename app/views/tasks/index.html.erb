@@ -1,20 +1,26 @@
 <h1> Welcome </h1>
-<ul>
-  <%= form_for @task do |form| %>
-    <%= render "error_messages", target: @task %>
-    <div>
-      <%=form.label :title %>
-      <%=form.text_field :title %>
-    </div>
+<%= form_for @task do |form| %>
+  <%= render "error_messages", target: @task %>
+  <div>
+    <%=form.label :title %>
+    <%=form.text_field :title %>
+  </div>
 
-    <div>
-      <%=form.label :description %>
-      <%=form.text_field :description %>
-    </div>
+  <div>
+    <%=form.label :description %>
+    <%=form.text_field :description %>
+  </div>
 
-    <div>
-      <%= form.submit %>
-     </div>
-   <%end%>
-  <%= render @tasks %>
+  <div>
+  <%= form.submit %>
+  </div>
+<%end%>
+
+<h3>Incomplete</h3>
+<ul id="incomplete_task_list">
+  <%= render @incomplete_tasks %>
+</ul>
+<h3>complete</h3>
+<ul id="complete_task_list">
+  <%= render @complete_tasks %>
 </ul>
